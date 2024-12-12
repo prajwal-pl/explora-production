@@ -20,10 +20,13 @@ import {
   BookOpen,
 } from "lucide-react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import Footer from "@/components/footer";
 
 const MotionCard = motion(Card);
 
-export default function Home() {
+interface HomeProps {}
+
+const Home: React.FC<HomeProps> = () => {
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -386,4 +389,6 @@ export default function Home() {
       </motion.section>
     </div>
   );
-}
+};
+
+export default Home;

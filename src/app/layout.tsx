@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { motion, AnimatePresence } from "framer-motion";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -22,14 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} font-sans`}>
-      <body className="bg-gray-50">
-        <AnimatePresence>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </AnimatePresence>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={`${poppins.variable} font-sans`}>
+        <body className="bg-gray-50">
+          <AnimatePresence>
+            <main>{children}</main>
+          </AnimatePresence>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
